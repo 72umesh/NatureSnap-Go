@@ -8,8 +8,7 @@ The idea is simple: use AI to help people spend less time on their screens and m
 
 Built for the DEV **Best Use of Gemma 4** challenge and the **Hacktoberfest Open-Source AI: Touch Grass** challenge.
 
-**Live demo:** _add your link_ · **Demo video:** _add your link_ · **Write-ups:** _add your DEV post links_
-
+**Live demo:**[ Try It Here](https://nature-snap-go.vercel.app/) 
 
 ## How it works
 

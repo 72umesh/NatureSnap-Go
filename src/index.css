@@ -1,0 +1,23 @@
+@import url('https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,100..1000;1,9..40,100..1000&display=swap');
+@import "tailwindcss";
+
+@theme {
+  --font-display: "Fraunces", Georgia, serif;
+  --font-sans: "DM Sans", sans-serif;
+
+  --color-sage-50: #f1f5ec;
+  --color-sage-100: #e2ebd8;
+  --color-sage-300: #b7c9a6;
+  --color-moss-900: #1b3524;
+  --color-moss-700: #2f5d3a;
+  --color-moss-500: #4e8a47;
+  --color-sun-400: #f2c14e;
+  --color-bark-800: #3a2e25;
+}
+
+body {
+  background-color: var(--color-sage-50);
+  color: var(--color-moss-900);
+  font-family: var(--font-sans);
+  -webkit-font-smoothing: antialiased;
+}

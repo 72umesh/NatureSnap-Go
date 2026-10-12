@@ -40,7 +40,7 @@ export default function App() {
     setError("");
     setStage("loading");
     try {
-      setResult(await snapPhoto(photo, note));
+      setResult(await snapPhoto(photo, note, minutes));
       setStage("result");
       window.scrollTo(0, 0);
     } catch (e) {

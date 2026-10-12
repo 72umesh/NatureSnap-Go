@@ -13,19 +13,24 @@ Built for the DEV **Best Use of Gemma 4** challenge and the **Hacktoberfest Open
 ## How it works
 
 1. **Snap:** upload a nature photo or choose an example. You can add a short note, like "found near my building".
-2. **Discover:** Gemma 4 looks at the photo and describes what it sees.
+2. **Discover:** Gemma 4 looks at the photo and describes what it sees, with a **High / Medium / Low** confidence label so you know how sure it is.
 3. **Look closer:** you get one detail worth noticing.
 4. **Go outside:** you get one simple outdoor mission and a time estimate.
 
 Once you're ready, put your phone away and go explore.
 
-Behind the scenes, the browser shrinks your photo and sends it to a small server. The server keeps the API key private and asks Gemma 4 to look at the photo. The prompt (`server/prompt.js`) tells Gemma to be honest when it's unsure, give only one mission, and never suggest touching, eating or picking anything unfamiliar.
+## Under the hood
+
+- The browser shrinks the photo and sends it to a small Node server that keeps the API key private.
+- The server asks Gemma 4 (`gemma-4-26b-a4b-it` by default) to look at the photo. The prompt (`server/prompt.js`) asks for honest uncertainty, one mission only, and forbids suggesting touching, eating or picking anything unfamiliar.
+- A **safety net** (`server/safety.js`) checks every reply too. If a mission still suggests touching or picking something, it is replaced with a safe one.
 
 ## Tech stack
 
 - **React + Vite** for the frontend
 - **Tailwind CSS** for styling
 - **Gemma 4 through the Gemini API** for image understanding and mission writing (`gemma-4-26b-a4b-it` by default)
+- **Sentry** for tracing and error tracking
 - **Node.js** for the API: validation, rate limiting and keeping the key off the browser
 
 ## Run it yourself
@@ -57,6 +62,7 @@ To run the tests: `npm test`
 | Setting | What it does |
 |---|---|
 | `GEMINI_MODEL` | Use a different model, e.g. `gemma-4-31b-it` |
+| `SENTRY_DSN` | Turn on Sentry. Leave it empty and the app works without it. |
 | `RATE_LIMIT_PER_10MIN` | Requests one visitor can make in 10 minutes (default 30) |
 | `LLM_PROVIDER=ollama` | Use a Gemma model on your own computer through [Ollama](https://ollama.com) instead of the Gemini API. Set `OLLAMA_MODEL` to a vision-capable tag. |
 

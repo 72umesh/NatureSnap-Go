@@ -1,4 +1,6 @@
 import BlinkButton from "./ui/Blinkbutton";
+import Confidence from "./ui/Confidence.jsx";
+import ReportAnswer from "./ui/ReportAnswer.jsx";
 
 const focusRing =
   "focus-visible:outline-3 focus-visible:outline-offset-2 focus-visible:outline-moss-700";
@@ -23,6 +25,10 @@ export default function Result({ photo, result, onBack, onGo }) {
         <BlinkButton text={result.category}/>
       </div>
 
+      <div className="-mt-1">
+        <Confidence level={result.confidence} />
+      </div>
+
       <section className="mt-4">
         <h2 className="font-semibold">What I see</h2>
         <p className="mt-1 leading-relaxed text-justify">{result.see}</p>
@@ -35,7 +41,7 @@ export default function Result({ photo, result, onBack, onGo }) {
 
       <section className="mt-8 rounded-xl bg-moss-900 px-4 py-4 text-sage-50 shadow-lg shadow-moss-900/25">
         <h2 className="font-semibold text-sun-400">Your Outdoor Mission</h2>
-        <p className="mt-3 font-display sm:text-2xl text-xl leading-snug text-justify">{result.mission}</p>
+        <p className="mt-3 font-display sm:text-xl text-lg leading-snug text-justify">{result.mission}</p>
         <p className="mt-4 inline-block rounded-full bg-sun-400 px-3 py-1 text-sm font-semibold text-moss-900">
           {result.time}
         </p>
@@ -48,6 +54,11 @@ export default function Result({ photo, result, onBack, onGo }) {
       >
         I'm going outside →
       </button>
+
+      <ReportAnswer result={result} />
+      {result.model && (
+        <p className="mt-3 text-center text-xs text-moss-700/70">Answered by {result.model}</p>
+      )}
     </article>
   );
 }

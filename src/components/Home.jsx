@@ -1,5 +1,6 @@
 import { useRef, useState } from "react";
 import { EXAMPLES } from "../examples.js";
+import TimeChips from "./ui/TimeChips.jsx";
 
 const focusRing =
   "focus-visible:outline-3 focus-visible:outline-offset-2 focus-visible:outline-moss-700";
@@ -8,6 +9,8 @@ export default function Home({
   photo,
   note,
   setNote,
+  minutes,
+  setMinutes,
   error,
   onFile,
   onSubmit,
@@ -93,6 +96,8 @@ export default function Home({
           className={`mt-2 w-full rounded-lg border border-sage-300 bg-white px-4 py-3 placeholder:text-moss-700/50 ${focusRing}`}
         />
       </label>
+
+      <TimeChips value={minutes} onChange={setMinutes} />
 
       {error && (
         <p

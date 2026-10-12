@@ -11,6 +11,7 @@ export default function App() {
 
   const [photo, setPhoto] = useState(null);
   const [note, setNote] = useState("");
+  const [minutes, setMinutes] = useState(null);
   const [result, setResult] = useState(null);
   const [error, setError] = useState("");
 
@@ -18,6 +19,7 @@ export default function App() {
     setStage("home");
     setPhoto(null);
     setNote("");
+    setMinutes(null);
     setResult(null);
     setError("");
     window.scrollTo(0, 0);
@@ -50,7 +52,7 @@ export default function App() {
   return (
     <main className="mx-auto flex min-h-dvh w-full max-w-md flex-col px-5 pb-8 pt-8">
       {stage === "home" && (
-        <Home photo={photo} note={note} setNote={setNote} error={error} onFile={loadFile} onSubmit={snapAndGo} />
+        <Home photo={photo} note={note} setNote={setNote} minutes={minutes} setMinutes={setMinutes} error={error} onFile={loadFile} onSubmit={snapAndGo} />
       )}
       {stage === "loading" && <Loading photo={photo} />}
       {stage === "result" && result && (
